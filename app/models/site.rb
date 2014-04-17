@@ -9,7 +9,6 @@ class Site < CDQManagedObject
         PM::logger.debug "rss parse"
         BW::RSSParser.new(res.body.to_str, true).parse do |item|
           items.push(item)
-          PM::logger.debug "add rss item"
         end
       else
         # App.alert(res.error_message)
