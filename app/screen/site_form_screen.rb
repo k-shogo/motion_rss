@@ -15,7 +15,7 @@ class SiteFormScreen < PM::FormotionScreen
     else
       Site.title = form.render[:title]
     end
-    cdq.save
+    # cdq.save
     close
   end
 

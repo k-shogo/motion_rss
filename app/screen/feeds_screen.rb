@@ -1,6 +1,5 @@
 class FeedsScreen < PM::TableScreen
   attr_accessor :feed_url, :site
-  # title self.site.title
 
   refreshable callback: :on_refresh,
     pull_message: "Pull to refresh",

@@ -5,7 +5,7 @@ class FavoriteScreen < PM::TableScreen
     PM::logger.debug "load_favorite"
     @favorites = [
       {
-        cells: Favorite.map do |fav|
+        cells: Favorite.all.to_a.map do |fav|
           {
             title:         fav.title,
             action:        :tapped_fav,
@@ -41,6 +41,5 @@ class FavoriteScreen < PM::TableScreen
 
   def on_cell_deleted(cell)
     cell[:arguments].destroy
-    cdq.save
   end
 end

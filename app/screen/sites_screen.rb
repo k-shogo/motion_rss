@@ -6,7 +6,7 @@ class SitesScreen < PM::TableScreen
     PM::logger.debug "load_site"
     @sites = [
       {
-        cells: Site.map do |site|
+        cells: Site.all.to_a.map do |site|
           {
             title:         site.title,
             action:        :tapped_site,
@@ -46,12 +46,10 @@ class SitesScreen < PM::TableScreen
       nav_bar: true,
       title: site.title,
       site: site,
-      # feed_url: site.url
     )
   end
 
   def on_cell_deleted(cell)
     cell[:arguments].destroy
-    cdq.save
   end
 end

@@ -1,4 +1,8 @@
-class Site < CDQManagedObject
+class Site
+  include Yapper::Document
+
+  field :title, :type => String
+  field :url,   :type => String
 
   def fetch_feed &block
     PM::logger.debug "fetch feed"
@@ -11,11 +15,9 @@ class Site < CDQManagedObject
           items.push(item)
         end
       else
-        # App.alert(res.error_message)
         message = res.error_message
       end
       block.call(items, message)
     end
   end
-
 end
