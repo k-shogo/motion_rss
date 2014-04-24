@@ -10,7 +10,7 @@ class WebScreen < PM::WebScreen
   end
 
   def add_favorite
-    Favorite.create title: self.title, url: self.url
+    Favorite.add self.title, self.url
     Motion::Blitz.success("#{self.title} add favorite")
   end
 

@@ -1,8 +1,11 @@
 class Site
   include Yapper::Document
+  include Yapper::Timestamps
 
-  field :title, :type => String
-  field :url,   :type => String
+  field :title, type: String
+  field :url,   type: String
+
+  index :title, :url, :created_at, :updated_at
 
   def fetch_feed &block
     PM::logger.debug "fetch feed"

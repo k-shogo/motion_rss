@@ -5,7 +5,7 @@ class FavoriteScreen < PM::TableScreen
     PM::logger.debug "load_favorite"
     @favorites = [
       {
-        cells: Favorite.all.to_a.map do |fav|
+        cells: Favorite.all.desc(:updated_at).to_a.map do |fav|
           {
             title:         fav.title,
             action:        :tapped_fav,
